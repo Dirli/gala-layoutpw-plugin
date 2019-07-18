@@ -1,7 +1,7 @@
 # gala-layoutpw-plugin
 Gala plugin to switch layouts per window
 
-The plugin is in a testing state. As long as it's always on. Hopefully a switch will be added to the switchboard-plug-keyboard in the future. The layout state is saved during the session. After the reboot, the state is reset.
+The plugin is in a testing state. As long as it's always on. Hopefully a switch will be added to the switchboard-plug-keyboard in the future.
 
 Works with mutter-3.28 and mutter-3.30
 

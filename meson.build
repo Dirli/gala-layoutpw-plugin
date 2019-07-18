@@ -1,7 +1,7 @@
 project (
     'gala-layoutpw-plugin',
     'vala', 'c',
-    version: '0.1.0'
+    version: '0.3.0'
 )
 
 vala_args = []

@@ -54,7 +54,7 @@ namespace Gala.Plugins.LayoutPW {
 
         private void on_changed_setting () {
             GLib.File file = GLib.File.new_for_path (path_to_cache + "/layoutpw_cache");
-            /* if (settings.get_boolean ("per-window")) { */
+            if (settings.get_boolean ("per-window")) {
                 focused_window_wmclass = "";
 
                 try {
@@ -70,14 +70,6 @@ namespace Gala.Plugins.LayoutPW {
                         }
                     }
 
-                } catch (Error e) {
-                    warning ("Error: %s\n", e.message);
-                }
-
-                display.window_created.connect (on_window_created);
-                Meta.Backend.get_backend ().keymap_changed.connect (on_keymap_changed);
-
-                try {
                     logind_manager = GLib.Bus.get_proxy_sync (BusType.SYSTEM,
                                                               "org.freedesktop.login1",
                                                               "/org/freedesktop/login1");
@@ -98,13 +90,15 @@ namespace Gala.Plugins.LayoutPW {
                     warning ("Error: %s\n", e.message);
                 }
 
-            /* } else {
+                display.window_created.connect (on_window_created);
+                Meta.Backend.get_backend ().keymap_changed.connect (on_keymap_changed);
+            } else {
                 display.window_created.disconnect (on_window_created);
                 Meta.Backend.get_backend ().keymap_changed.disconnect (on_keymap_changed);
                 layout_apps.clear ();
                 clear_cache (file);
                 logind_manager = null;
-            } */
+            }
         }
 
         private void on_window_created (Meta.Window window) {

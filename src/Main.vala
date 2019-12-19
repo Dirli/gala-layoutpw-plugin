@@ -107,20 +107,24 @@ namespace Gala.Plugins.LayoutPW {
                     var wmclass = window.get_wm_class ();
                     if (wmclass != null && focused_window_wmclass != wmclass) {
                         focused_window_wmclass = wmclass;
-                        var current = settings.get_value ("current");
-                        var cur_layout = current.get_uint32 ();
-                        if (layout_apps.has_key (wmclass)) {
-                            if (layout_apps[wmclass] != cur_layout) {
-                                settings.set_value ("current", layout_apps[wmclass]);
-                            }
-                        } else {
-                            if (cur_layout != 0) {
-                                var default_layout = new Variant.uint32 (0);
-                                settings.set_value ("current", default_layout);
-                            }
-                        }
+                        window_focused_async.begin (wmclass);
                     }
                 });
+            }
+        }
+
+        private async void window_focused_async (string wmclass) {
+            var current = settings.get_value ("current");
+            var cur_layout = current.get_uint32 ();
+            if (layout_apps.has_key (wmclass)) {
+                if (layout_apps[wmclass] != cur_layout) {
+                    settings.set_value ("current", layout_apps[wmclass]);
+                }
+            } else {
+                if (cur_layout != 0) {
+                    var default_layout = new Variant.uint32 (0);
+                    settings.set_value ("current", default_layout);
+                }
             }
         }
 

@@ -93,6 +93,7 @@ namespace Gala.Plugins.LayoutPW {
                 display.window_created.connect (on_window_created);
                 Meta.Backend.get_backend ().keymap_changed.connect (on_keymap_changed);
             } else {
+                warning ("layout-per-window plugin is off");
                 display.window_created.disconnect (on_window_created);
                 Meta.Backend.get_backend ().keymap_changed.disconnect (on_keymap_changed);
                 layout_apps.clear ();

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+	<enum id="GalaSaveType">
+		<value nick='none' value='0'/>
+        <value nick='application' value='1'/>
+		<value nick='window' value='2'/>
+	</enum>
+
+	<schema path="/org/pantheon/desktop/gala/layout-per-window/" id="org.pantheon.desktop.gala.layout-per-window">
+        <key enum="GalaSaveType" name="save-type">
+			<default>'none'</default>
+			<summary>Layout storage state</summary>
+            <description>Layout storage state</description>
+		</key>
+
+		<key type="b" name="restore">
+			<default>true</default>
+			<summary>Restore a layout after the reboot</summary>
+            <description>Restore a layout after the reboot</description>
+		</key>
+	</schema>
+</schemalist>

@@ -91,3 +91,10 @@ lib = shared_library ('gala-layoutpw',
     install_rpath: mutter_typelib_dir,
     install_dir: join_paths (get_option ('libdir'), 'gala', 'plugins')
 )
+
+install_data(
+    'data/gala.layout-per-window.gschema.xml',
+    install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
+)
+
+meson.add_install_script ('meson/meson_post_install.py')

@@ -4,8 +4,7 @@ Gala plugin to switch layouts per window
 The plugin is in a testing state. As long as it's always on. Hopefully a switch will be added to the switchboard-plug-keyboard in the future.
 
 ## Notice
-if you are using version >0.3.0, you need to enable "org.gnome.desktop.input-sources.per-window"
-The schema has changed for the master branch. Be careful) "org.pantheon.desktop.gala.layout-per-window" (value: none | application | window)
+if you are using version 0.3.1, you need to enable "org.gnome.desktop.input-sources.per-window"
 
 Works with mutter-3.28, mutter-3.30, mutter-3.34
 

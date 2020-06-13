@@ -6,8 +6,6 @@ The plugin is in a testing state. As long as it's always on. Hopefully a switch 
 ## Notice
 if you are using version 0.3.1, you need to enable "org.gnome.desktop.input-sources.per-window"
 
-Works with mutter-3.28, mutter-3.30, mutter-3.34
-
 ## Building and Installation
 
 You'll need the following dependencies to build:
@@ -30,6 +28,6 @@ You'll need the following dependencies to build:
 
 ## if something went wrong
 
-    cd [your lib directory]/gala/plugins
+    cd [your_lib_directory]/gala/plugins
     sudo rm libgala-layoutpw.so
     reboot

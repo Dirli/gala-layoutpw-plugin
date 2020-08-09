@@ -246,7 +246,7 @@ namespace Gala.Plugins.LayoutPW {
 
                         layout_apps.foreach ((m_entry) => {
                             try {
-                                dos.put_string ("%s::%llu\n".printf (m_entry.key, m_entry.value));
+                                dos.put_string (@"$(m_entry.key)::$(m_entry.value)\n");
                             } catch (Error e) {
                                 warning (e.message);
                                 return false;

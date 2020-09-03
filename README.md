@@ -1,7 +1,13 @@
 # gala-layoutpw-plugin
 Gala plugin to switch layouts per window
 
-The plugin is in a testing state. As long as it's always on. Hopefully a switch will be added to the switchboard-plug-keyboard in the future.
+<p align="left">
+    <a href="https://paypal.me/Dirli85">
+        <img src="https://img.shields.io/badge/Donate-PayPal-green.svg">
+    </a>
+</p>
+
+----
 
 ## Notice
 if you are using version 0.3.1, you need to enable "org.gnome.desktop.input-sources.per-window"

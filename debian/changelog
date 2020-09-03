@@ -1,0 +1,11 @@
+gala-layoutpw-plugin (0.3.4-1) testing; urgency=medium
+
+  * update the vapi (Mutter 3.36)
+
+ -- dirli <litandrej85@gmail.com>  Sat, 13 Jun 2020 21:27:24 +0300
+
+gala-layoutpw-plugin (0.3.3-1) testing; urgency=medium
+
+  * new upstream release
+
+ -- dirli <litandrej85@gmail.com>  Thu, 23 Apr 2020 15:10:37 +0300

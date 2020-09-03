@@ -1,0 +1,23 @@
+Source: gala-layoutpw-plugin
+Section: X11
+Priority: optional
+Maintainer: dirli <litandrej85@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+               gnome-settings-daemon-dev (>= 3.15.2),
+               gsettings-desktop-schemas-dev,
+               libgala-dev,
+               libgee-0.8-dev,
+               libglib2.0-dev (>= 2.44),
+               libmutter-6-dev,
+               meson,
+               valac (>= 0.28.0)
+Standards-Version: 4.5.0
+Homepage: https://github.com/Dirli/gala-layoutpw-plugin
+Rules-Requires-Root: no
+
+Package: gala-layoutpw-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Enhances: gala
+Description: Gala plugin to saving layouts per window
+ Gala plugin to saving layouts per window

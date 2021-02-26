@@ -1,4 +1,4 @@
-[CCode (gir_namespace = "CoglPath", gir_version = "4")]
+[CCode (gir_namespace = "CoglPath", gir_version = "6")]
 namespace Cogl {
 	[CCode (cheader_filename = "cogl-path/cogl-path.h", copy_function = "cogl_path_copy", ref_function = "cogl_object_ref", unref_function = "cogl_object_unref", type_id = "cogl_path_get_gtype")]
 	[Compact]

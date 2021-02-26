@@ -45,11 +45,9 @@ namespace Gala.Plugins.LayoutPW {
 
         public override void initialize (Gala.WindowManager wm) {
 			this.wm = wm;
-#if HAS_MUTTER330
+
             display = wm.get_display ();
-#else
-            display = wm.get_screen ().get_display ();
-#endif
+
             layout_wins = new Gee.HashMap<int, uint32> ();
             layout_apps = new Gee.HashMap<string, uint32> ();
 

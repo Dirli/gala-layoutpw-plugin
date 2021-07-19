@@ -1,7 +1,7 @@
 project (
     'gala-layoutpw-plugin',
     'vala', 'c',
-    version: '0.3.4'
+    version: '6.0.0'
 )
 
 add_project_arguments ([
@@ -17,7 +17,7 @@ vala_flags = []
 c_flags = [
     '-DCLUTTER_ENABLE_COMPOSITOR_API',
     '-DCLUTTER_ENABLE_EXPERIMENTAL_API',
-	'-DCOGL_ENABLE_EXPERIMENTAL_API',
+    '-DCOGL_ENABLE_EXPERIMENTAL_API',
     '-DCOGL_ENABLE_EXPERIMENTAL_2_0_API'
 ]
 
@@ -57,7 +57,7 @@ endif
 lib = shared_library ('gala-layoutpw',
     'src/Main.vala',
     dependencies: [
-        dependency ('gala'),
+        dependency ('gala', version: '>= 6.0.0'),
         dependency ('gee-0.8'),
         dependency ('glib-2.0'),
         dependency ('gio-unix-2.0'),

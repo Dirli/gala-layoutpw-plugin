@@ -1,3 +1,9 @@
+gala-layoutpw-plugin (6.0.0-1) bullseye; urgency=medium
+
+  * added libmutter-7 support (Mutter 3.38)
+
+ -- dirli <litandrej85@gmail.com>  Mon, 19 Jul 2021 20:14:24 +0300
+
 gala-layoutpw-plugin (0.3.4-1) testing; urgency=medium
 
   * update the vapi (Mutter 3.36)

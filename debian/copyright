@@ -1,21 +1,12 @@
-his work was packaged for Debian by:
+Format: http://dep.debian.net/deps/dep5
+Upstream-Name: gala-layoutpw-plugin
+Source: https://github.com/Dirli/gala-layoutpw-plugin
 
-    Dirli <litandrej85@gmail.com> on Thu, 03 Sep 2020 23:55:33 +0300
-
-It was downloaded from:
-
-    https://github.com/Dirli/gala-layoutpw-plugin
-
-Upstream Author(s):
-
-    Dirli <litandrej85@gmail.com>
-
-Copyright:
-
-    Copyright (C) 2020 Dirli <litandrej85@gmail.com>
-
+Files: *
+Copyright: 2019-2021 dirli <litandrej85@gmail.com>
 License: GPL-3.0+
 
+License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or

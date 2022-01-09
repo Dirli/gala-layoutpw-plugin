@@ -1,3 +1,9 @@
+gala-layoutpw-plugin (6.3.0-1) bullseye; urgency=medium
+
+  * added libmutter-9 support (Mutter 41)
+
+ -- dirli <litandrej85@gmail.com>  Mon, 10 Jan 2022 02:41:18 +0300
+
 gala-layoutpw-plugin (6.1.0-1) bullseye; urgency=medium
 
   * added libmutter-8 support (Mutter 40)

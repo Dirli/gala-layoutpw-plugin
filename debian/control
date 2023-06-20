@@ -8,7 +8,8 @@ Build-Depends: debhelper-compat (= 13),
                libgala-dev,
                libgee-0.8-dev,
                libglib2.0-dev (>= 2.44),
-               libmutter-9-dev | libmutter-8-dev | libmutter-7-dev | libmutter-6-dev,
+               libgranite-dev (>= 5.4.0),
+               libmutter-11-dev | libmutter-10-dev | libmutter-9-dev | libmutter-8-dev | libmutter-7-dev | libmutter-6-dev,
                meson,
                valac (>= 0.48.0)
 Standards-Version: 4.5.1

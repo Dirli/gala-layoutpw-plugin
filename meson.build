@@ -1,10 +1,10 @@
-project (
+project(
   'gala-layoutpw-plugin',
   'vala', 'c',
-  version: '7.0.0'
+  version: '7.1.0'
 )
 
-add_project_arguments ([
+add_project_arguments([
     '--vapidir=' + join_paths (meson.source_root (), 'vapi'),
   ],
   language: 'vala',
@@ -56,17 +56,17 @@ if mutter44_dep.found()
 endif
 
 if mutter_dep.length () == 0
-  error ('No supported mutter library found!')
+  error('No supported mutter library found!')
 endif
 
-mutter_typelib_dir = libmutter_dep.get_pkgconfig_variable ('typelibdir')
+mutter_typelib_dir = libmutter_dep.get_pkgconfig_variable('typelibdir')
 
-vapigen = find_program ('vapigen', required: false)
-if vapigen.found ()
-  subdir ('vapi')
+vapigen = find_program('vapigen', required: false)
+if vapigen.found()
+  subdir('vapi')
 endif
 
-lib = shared_library ('gala-layoutpw',
+lib = shared_library('gala-layoutpw',
   'src/Main.vala',
   dependencies: [
     dependency('gala', version: '>= 6.0.0'),
@@ -80,12 +80,12 @@ lib = shared_library ('gala-layoutpw',
   vala_args: vala_flags,
   c_args: c_flags,
   install_rpath: mutter_typelib_dir,
-  install_dir: join_paths (get_option ('libdir'), 'gala', 'plugins')
+  install_dir: join_paths(get_option('libdir'), 'gala', 'plugins')
 )
 
-install_data (
+install_data(
   'data/gala.layout-per-window.gschema.xml',
-  install_dir: join_paths (get_option ('datadir'), 'glib-2.0', 'schemas')
+  install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
 )
 
-meson.add_install_script ('meson/meson_post_install.py')
+meson.add_install_script('meson/meson_post_install.py')

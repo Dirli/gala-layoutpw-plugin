@@ -1,5 +1,11 @@
 gala-layoutpw-plugin (7.0.0-1) testing; urgency=medium
 
+  * added libmutter-12 support (Mutter 44)
+
+ -- dirli <litandrej85@gmail.com>  Mon, 6 Aug 2023 00:35:12 +0300
+
+gala-layoutpw-plugin (7.0.0-1) testing; urgency=medium
+
   * added libmutter-10 support (Mutter 42)
   * added libmutter-11 support (Mutter 43)
 

@@ -80,7 +80,11 @@ namespace Gala.Plugins.LayoutPW {
                 warning ("layout-per-window plugin: is off");
                 if (old_state != SaveType.NONE) {
                     display.window_created.disconnect (on_window_created);
-                    Meta.Backend.get_backend ().keymap_changed.disconnect (on_keymap_changed);
+#if HAS_MUTTER44
+                    display.get_context ().get_backend ().keymap_layout_group_changed.disconnect (on_keymap_changed);
+#else
+                    Meta.Backend.get_backend ().keymap_layout_group_changed.disconnect (on_keymap_changed);
+#endif
                 }
 
                 return;
@@ -105,16 +109,8 @@ namespace Gala.Plugins.LayoutPW {
                                                               "/org/freedesktop/login1");
 
                     if (logind_manager != null) {
-                        logind_manager.prepare_for_shutdown.connect ((start) => {
-                            if (settings.get_boolean ("restore") && start) {
-                                save_cache ();
-                            }
-                        });
-                        logind_manager.prepare_for_sleep.connect ((start) => {
-                            if (settings.get_boolean ("restore") && start) {
-                                save_cache ();
-                            }
-                        });
+                        logind_manager.prepare_for_shutdown.connect (save_cache);
+                        logind_manager.prepare_for_sleep.connect (save_cache);
                     }
                 } catch (Error e) {
                     warning ("Error: %s\n", e.message);
@@ -124,7 +120,11 @@ namespace Gala.Plugins.LayoutPW {
             warning ("layout-per-window plugin: selected for %s".printf (save_state == SaveType.APPLICATION ? "application" : "window"));
             if (old_state == SaveType.NONE) {
                 display.window_created.connect (on_window_created);
-                Meta.Backend.get_backend ().keymap_changed.connect (on_keymap_changed);
+#if HAS_MUTTER44
+                display.get_context ().get_backend ().keymap_layout_group_changed.connect (on_keymap_changed);
+#else
+                Meta.Backend.get_backend ().keymap_layout_group_changed.connect (on_keymap_changed);
+#endif
             }
         }
 
@@ -183,24 +183,23 @@ namespace Gala.Plugins.LayoutPW {
             }
         }
 
-        private void on_keymap_changed () {
+        private void on_keymap_changed (uint current_layout) {
             var focused_windows = display.get_focus_window ();
             if (focused_windows != null) {
-                var cur_layout = get_current_layout ();
                 if (save_state == SaveType.APPLICATION) {
                     var wmclass = focused_windows.get_wm_class ();
-                    if (cur_layout != 0) {
-                        if (!layout_apps.has_key (wmclass) || layout_apps[wmclass] != cur_layout) {
-                            layout_apps[wmclass] = cur_layout;
+                    if (current_layout != 0) {
+                        if (!layout_apps.has_key (wmclass) || layout_apps[wmclass] != current_layout) {
+                            layout_apps[wmclass] = current_layout;
                         }
                     } else if (layout_apps.has_key (wmclass)) {
                         layout_apps.unset (wmclass);
                     }
                 } else if (save_state == SaveType.WINDOW) {
                     var wid = (int) focused_windows.get_xwindow ();
-                    if (cur_layout != 0) {
-                        if (!layout_wins.has_key (wid) || layout_wins[wid] != cur_layout) {
-                            layout_wins[wid] = cur_layout;
+                    if (current_layout != 0) {
+                        if (!layout_wins.has_key (wid) || layout_wins[wid] != current_layout) {
+                            layout_wins[wid] = current_layout;
                         }
                     } else if (layout_wins.has_key (wid)) {
                         layout_wins.unset (wid);
@@ -234,14 +233,16 @@ namespace Gala.Plugins.LayoutPW {
             return true;
         }
 
-        private void save_cache () {
+        private void save_cache (bool start) {
+            if (!settings.get_boolean ("restore") || !start) {
+                return;
+            }
+
             try {
                 var cache_file = GLib.File.new_for_path (path_to_cache + "/layoutpw_cache");
-
                 if (clear_cache (cache_file)) {
                     if (layout_apps.size > 0) {
                         var dos = new GLib.DataOutputStream (cache_file.create (FileCreateFlags.REPLACE_DESTINATION));
-
                         layout_apps.foreach ((m_entry) => {
                             try {
                                 dos.put_string (@"$(m_entry.key)::$(m_entry.value)\n");
@@ -266,7 +267,11 @@ namespace Gala.Plugins.LayoutPW {
             }
 
             display.window_created.disconnect (on_window_created);
-            Meta.Backend.get_backend ().keymap_changed.disconnect (on_keymap_changed);
+#if HAS_MUTTER44
+            display.get_context ().get_backend ().keymap_layout_group_changed.disconnect (on_keymap_changed);
+#else
+            Meta.Backend.get_backend ().keymap_layout_group_changed.disconnect (on_keymap_changed);
+#endif
 		}
     }
 }

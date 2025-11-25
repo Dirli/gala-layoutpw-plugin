@@ -1,7 +1,7 @@
 project(
   'gala-layoutpw-plugin',
   'vala', 'c',
-  version: '7.1.1'
+  version: '7.1.2'
 )
 
 add_project_arguments([
